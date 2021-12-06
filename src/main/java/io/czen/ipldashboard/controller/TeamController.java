@@ -23,7 +23,7 @@ public class TeamController {
         this.matchRepository = matchRepository;
     }
 
-    @GetMapping(value = "/team/{teamName}", produces = "application/json")
+    @GetMapping(value = "/team/{teamName}")
     public Team getTeam(@PathVariable String teamName) {
 
         Team team = this.teamRepository.findByTeamName(teamName);
@@ -40,4 +40,8 @@ public class TeamController {
         return matches;
     }
 
+    @GetMapping(value = "/team")
+    public Iterable<Team> getAllTeam() {
+        return this.teamRepository.findAll();
+    }
 }
